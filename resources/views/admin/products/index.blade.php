@@ -5,22 +5,23 @@
 @section('content')
     <div class="main-content">
         <section class="section">
-            @if(session('success')) 
-            <div class="alert alert-success alert-dismissible show fade">
-                <div class="alert-body">
-                  <button class="close" data-dismiss="alert">
-                    <span>×</span>
-                  </button>
-                  {{ session('success') }}
+            @if (session('success'))
+                <div class="alert alert-success alert-dismissible show fade">
+                    <div class="alert-body">
+                        <button class="close" data-dismiss="alert">
+                            <span>×</span>
+                        </button>
+                        {{ session('success') }}
+                    </div>
                 </div>
-              </div>
             @endif
             <div class="row">
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
                             <h3>Product Table</h3>
-                            <a href="{{ route('admin.products.create') }}" class="btn btn-primary ml-auto">Create Product</a>
+                            <a href="{{ route('admin.products.create') }}" class="btn btn-primary ml-auto">Create
+                                Product</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -32,21 +33,29 @@
                                             <th>Nomi_uz</th>
                                             <th>Desc_uz</th>
                                             <th>Price</th>
-                                            {{-- <th>Created At</th> --}}
+                                            <th>Images</th>
                                             <th>Action</th>
                                         </tr>
-                                        {{-- @foreach ($categories as $category)
+                                        @foreach ($products as $product)
                                             <tr>
-                                                <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $category->name_uz }}</td>
-                                                <td>{{ $category->name_en }}</td>
-                                                <td>{{ $category->name_ru }}</td>
-                                                <td>{{ $category->slug }}</td>
+                                                <td>{{ $product->id }}</td>
+                                                <td>{{ $product->category->name_uz ?? 'Boglanmagan' }}</td>
+                                                <td>{{ $product->title_uz }}</td>
+                                                <td>{{ $product->desc_uz }}</td>
+                                                <td>{{ $product->price }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.categories.edit', $category->id) }}"
+                                                    @foreach (explode('|', $product->multi_img) as $image)
+                                                        <img src="{{ asset('Products/image/' . $image) }}" alt="Product Image" width="50px" height="50px">
+                                                    @endforeach
+                                                </td>
+
+                                                <td>
+                                                    <a href="{{ route('admin.products.edit', $product->id) }}"
                                                         class="btn btn-success">Edit</a>
+                                                    <a href="{{ route('admin.products.show', $product->id) }}"
+                                                        class="btn btn-warning">Show</a>
                                                     <form style="display: inline"
-                                                        action="{{ route('admin.categories.destroy', $category->id) }}"
+                                                        action="{{ route('admin.products.destroy', $product->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -55,13 +64,13 @@
                                                     </form>
                                                 </td>
                                             </tr>
-                                        @endforeach --}}
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                         {{-- Pagination --}}
-    
+
                         <div class="card-footer text-right">
                             <nav class="d-inline-block">
                                 <ul class="pagination mb-0">

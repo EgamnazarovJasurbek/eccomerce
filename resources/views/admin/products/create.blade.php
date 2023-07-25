@@ -19,12 +19,20 @@
                             <div class="card-body">
                                 {{-- Category Id --}}
                                 <div class="form-group">
+                                    <label>Product Category </label>
+                                    <select class="form-control form-select" name="category_id">
+                                        @foreach ($categories as $category)
+                                            <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- <div class="form-group">
                                     <label>Category Id</label>
                                     <input type="text" class="form-control" name="category_id" value="{{ old('category_id') }}">
                                     @error('category_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
-                                </div>
+                                </div> --}}
                                 {{-- Add Product Name --}}
                                 <div class="form-group">
                                     <label>Name (Uz)</label>
@@ -75,23 +83,16 @@
                                 {{-- Price --}}
                                 <div class="form-group">
                                     <label>Price</label>
-                                    <input type="text" class="form-control" name="price" value="{{ old('price') }}">
+                                    <input type="number" class="form-control" name="price" value="{{ old('price') }}">
                                     @error('price')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                {{-- Image --}}
+                                {{-- Multi Image --}}
                                 <div class="form-group">
-                                    <label>Image</label>
-                                    <input type="file" class="form-control" name="image" value="{{ old('image') }}">
-                                    @error('image')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                  {{-- Multi Image --}}
-                                  <div class="form-group">
                                     <label>Multi Img</label>
-                                    <input type="file" class="form-control" name="multi_img[]" multiple value="{{ old('multi_img') }}">
+                                    <input type="file" class="form-control" name="multi_img[]" multiple
+                                        value="{{ old('multi_img') }}">
                                     @error('multi_img')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror

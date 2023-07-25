@@ -9,7 +9,6 @@ class Category extends Model
 {
     use HasFactory;
 
-
     protected $fillable = [
         'name_uz',
         'name_ru',
@@ -19,4 +18,9 @@ class Category extends Model
         'meta_description',
         'meta_keywords',
     ];
+
+    public function products(){
+
+        return $this->hasMany(Product::class);
+    }
 }

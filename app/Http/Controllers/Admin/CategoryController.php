@@ -62,7 +62,7 @@ class CategoryController extends Controller
         $requestData['slug'] =\Str::slug($request->name_uz);
         $category = Category::findOrFail($id);
         $category->update($requestData);
-        return redirect()->route('admin.categories.index')->with('success', "Update Succesfully");
+        return redirect()->route('admin.categories.index')->with('success', "Tahrirlandi👍 ");
     }
 
     /**
@@ -72,6 +72,6 @@ class CategoryController extends Controller
     {
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect()->route('admin.categories.index')->with('success', "Update Succesfully");
+        return redirect()->route('admin.categories.index')->with('success', "O'chirildi✔️");
     }
 }

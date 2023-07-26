@@ -47,7 +47,7 @@
         </div>
         <div class="humberger__menu__widget">
             <div class="header__top__right__language">
-                <img src="/allStyle/img/language.png" alt="">
+                <img src="/allStyle/img/bayroq.png" alt="">
                 <div>English</div>
                 <span class="arrow_carrot-down"></span>
                 <ul>

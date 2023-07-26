@@ -111,7 +111,24 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-    {
-        //
+{
+    // Mahsulotni id bo'yicha topib olib olamiz
+    $product = Product::findOrFail($id);
+
+    // Eski rasmlarning manzillarini ma'lumotlar omboridan olamiz
+    $oldImages = explode('|', $product->multi_img);
+
+    // Eski rasmlarni o'chirish
+    foreach ($oldImages as $oldImage) {
+        $oldImagePath = public_path('Products/image/' . $oldImage);
+        if (File::exists($oldImagePath)) {
+            File::delete($oldImagePath);
+        }
     }
+
+    // Mahsulotni o'chiramiz
+    $product->delete();
+
+    return redirect()->route('admin.products.index')->with('success', "Mahsulot o'chirildi");
+}
 }

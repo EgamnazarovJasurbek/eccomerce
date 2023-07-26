@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -46,6 +47,7 @@ class MainController extends Controller
     public function blogDetails()
     {
         return view('blogDetails');
+        // $ppp = Category:();
     }
 
     public function bot($method, $params = [])

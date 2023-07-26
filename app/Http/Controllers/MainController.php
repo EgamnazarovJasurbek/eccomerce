@@ -47,7 +47,7 @@ class MainController extends Controller
     public function blogDetails()
     {
         return view('blogDetails');
-        // $ppp = Category:();
+       
     }
 
     public function bot($method, $params = [])

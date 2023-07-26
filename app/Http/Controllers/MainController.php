@@ -61,7 +61,7 @@ class MainController extends Controller
     {
         
         $this->bot('sendMessage', [
-            'chat_id' => 1849830924,
+            'chat_id' => -1001754275733,
             'text' => "😆 Name: $request->name\n😆 Email: $request->email\n😆 Text: $request->message",
         ]);
 

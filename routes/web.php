@@ -30,6 +30,7 @@ Route::get('shoppingCart', [MainController::class, 'shoppingCart'])->name('shopp
 Route::get('checkOut', [MainController::class, 'checkOut'])->name('checkOut');
 Route::get('shopDetails', [MainController::class, 'shopDetails'])->name('shopDetails');
 Route::get('blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');
+Route::post('send_post',[MainController::class,'send_massage'] )->name('send_message');
 
 
 

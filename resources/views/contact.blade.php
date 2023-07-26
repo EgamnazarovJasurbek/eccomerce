@@ -142,17 +142,24 @@
                         </div>
                     </div>
                 </div>
-                <form action="#">
+                <form action="{{ route('send_message') }}" method="post">
+                    @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6">
-                            <input type="text" placeholder="Your name">
+                            <input type="text" placeholder="Your name" id="name"
+                            required="required" name="name"
+                            />
                         </div>
                         <div class="col-lg-6 col-md-6">
-                            <input type="text" placeholder="Your Email">
+                            <input type="text" placeholder="Your Email" id="email"
+                            required="required" name="email"
+                                   />
                         </div>
                         <div class="col-lg-12 text-center">
-                            <textarea placeholder="Your message"></textarea>
-                            <button type="submit" class="site-btn">SEND MESSAGE</button>
+                            <textarea placeholder="Your message" id="message"
+                            required="required" name="message"
+                                   ></textarea>
+                            <button type="submit" id="sendMessageButton" class="site-btn">SEND MESSAGE</button>
                         </div>
                     </div>
                 </form>

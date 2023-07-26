@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class MainController extends Controller
 {
@@ -45,5 +46,23 @@ class MainController extends Controller
     public function blogDetails()
     {
         return view('blogDetails');
+    }
+
+    public function bot($method, $params = [])
+    {
+        $url = 'https://api.telegram.org/bot' . config('services.telegram.token') . '/' . $method;
+        $data = Http::post($url, $params);
+        return $data->json();
+    }
+
+    public function send_massage(Request $request)
+    {
+        
+        $this->bot('sendMessage', [
+            'chat_id' => 1849830924,
+            'text' => "😆 Name: $request->name\n😆 Email: $request->email\n😆 Text: $request->message",
+        ]);
+
+        return back();
     }
 }

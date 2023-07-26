@@ -132,7 +132,7 @@
                                             </div>
                                         </td>
                                         <td class="shoping__cart__total">
-                                            $39.99
+                                            $4000
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>

@@ -144,7 +144,7 @@
                                             <h5>Organic Bananas</h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            $69.00
+                                            $69.012
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">

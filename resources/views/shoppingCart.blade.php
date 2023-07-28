@@ -17,17 +17,7 @@
                                 <span>All departments</span>
                             </div>
                             <ul>
-                                <li><a href="#">Fresh Meat</a></li>
-                                <li><a href="#">Vegetables</a></li>
-                                <li><a href="#">Fruit & Nut Gifts</a></li>
-                                <li><a href="#">Fresh Berries</a></li>
-                                <li><a href="#">Ocean Foods</a></li>
-                                <li><a href="#">Butter & Eggs</a></li>
-                                <li><a href="#">Fastfood</a></li>
-                                <li><a href="#">Fresh Onion</a></li>
-                                <li><a href="#">Papayaya & Crisps</a></li>
-                                <li><a href="#">Oatmeal</a></li>
-                                <li><a href="#">Fresh Bananas</a></li>
+                                
                             </ul>
                         </div>
                     </div>
@@ -132,7 +122,7 @@
                                             </div>
                                         </td>
                                         <td class="shoping__cart__total">
-                                            $39.99
+                                            $4000
                                         </td>
                                         <td class="shoping__cart__item__close">
                                             <span class="icon_close"></span>
@@ -144,7 +134,7 @@
                                             <h5>Organic Bananas</h5>
                                         </td>
                                         <td class="shoping__cart__price">
-                                            $69.00
+                                            $69.012
                                         </td>
                                         <td class="shoping__cart__quantity">
                                             <div class="quantity">

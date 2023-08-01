@@ -19,7 +19,8 @@ return new class extends Migration
             $table->string('title_ru');
             $table->string('desc_uz');
             $table->string('desc_en');
-            $table->integer('price');
+            $table->string('price')->number();
+            $table->integer('view')->deafult(0);
             $table->string('slug')->unique();
             $table->string('desc_ru');
             $table->string('multi_img')->nulalbe();

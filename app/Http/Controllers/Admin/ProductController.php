@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Product;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -26,8 +28,9 @@ class ProductController extends Controller
      */
     public function create()
     {
+        $tags = Tag::all();
         $categories = Category::all();
-        return view('admin.products.create', compact('categories'));
+        return view('admin.products.create', compact('categories','tags'));
     }
 
     /**
@@ -37,6 +40,11 @@ class ProductController extends Controller
     {
 
         $requestData = $request->all();
+
+        if(empty($request->is_spacial)){
+            $requestData['is_spacial'] = 0;
+        }
+      
 
         if ($request->hasFile('image')) {
             $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
@@ -48,6 +56,7 @@ class ProductController extends Controller
         $requestData['slug'] = Str::slug($requestData['title_uz']);
 
         $product = new Product();
+        $product->tags()->attach($request->tags);
         $product->storeProduct($requestData);
 
         return redirect()->route('admin.products.index')->with('success', "Mahsulot qo'shildi✔️");
@@ -56,19 +65,19 @@ class ProductController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Product $product)
     {
-        //
+        return view("admin.products.show",compact('product'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
         $categories = Category::all();
-        $product = Product::findOrFail($id);
-        return view('admin.products.edit', compact('product', 'categories'));
+        $menus = Menu::all();
+        return view('admin.products.edit', compact('product', 'categories','menus'));
     }
 
     /**
@@ -102,6 +111,9 @@ class ProductController extends Controller
             $data['multi_img'] = $product->multi_img;
         }
 
+        if(empty($request->is_spacial)){
+            $requestData['is_spacial'] = 0;
+        }
         // Yangi ma'lumotlar bilan mahsulotni yangilaymiz
         $product->update($data);
 

@@ -3,7 +3,9 @@
 @section('title')
     Create
 @endsection
-
+@section('css')
+  <link rel="stylesheet" href="/admin/assets/bundles/select2/dist/css/select2.min.css">
+@endsection
 
 @section('content')
     <div class="main-content">
@@ -23,6 +25,16 @@
                                     <select class="form-control form-select" name="category_id">
                                         @foreach ($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                {{-- menus --}}
+                                <div class="form-group">
+
+                                    <label>Tags selected </label>
+                                    <select id="" name="tags[]" class="form-control select2" multiple="">
+                                        @foreach ($tags as $tag)
+                                            <option value="{{ $tag->id }}">{{ $tag->name_uz }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -97,6 +109,14 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
+                                {{-- is_spacial --}}
+                                <div class="form-group">
+                                    <div class="control-label">Muhimmi ?</div>
+                                    <label class="custom-switch mt-2">
+                                      <input type="checkbox" value="1" name="is_spacial" class="custom-switch-input">
+                                      <span class="custom-switch-indicator"></span>
+                                    </label>
+                                  </div>
                                 {{-- Slug --}}
                                 <div class="form-group">
                                     <label>Slug</label>
@@ -128,4 +148,7 @@
             </div>
         </section>
     </div>
+@endsection
+@section('js')
+<script src="/admin/assets/bundles/select2/dist/js/select2.full.min.js"></script>
 @endsection

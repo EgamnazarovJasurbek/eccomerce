@@ -31,7 +31,7 @@
                                             <th>id</th>
                                             <th>Category_id</th>
                                             <th>Nomi_uz</th>
-                                            <th>Desc_uz</th>
+                                            {{-- <th>Desc_uz</th> --}}
                                             <th>Price</th>
                                             <th>Images</th>
                                             <th>Action</th>
@@ -41,7 +41,7 @@
                                                 <td>{{ $product->id }}</td>
                                                 <td>{{ $product->category->name_uz ?? 'Boglanmagan' }}</td>
                                                 <td>{{ $product->title_uz }}</td>
-                                                <td>{{ $product->desc_uz }}</td>
+                                                {{-- <td>{{ $product->desc_uz }}</td> --}}
                                                 <td>{{ $product->price }}</td>
                                                 <td>
                                                     @foreach (explode('|', $product->multi_img) as $image)

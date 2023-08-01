@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
 class MainController extends Controller
 {
-    // public function categoryProducts($slug)
-    // {
-    //     return view('categoryProducts');
-    // }
 
-
-    public function shopGrid()
+    public function index()
     {
-        return view('shopGrid');
+        
+        $categories = Category::all();
+        return view('index',compact('categories'));
+    }
+
+    public function categoryShop()
+    {
+        return view('categoryShop');
     }
 
     public function blog()
@@ -47,7 +50,6 @@ class MainController extends Controller
     public function blogDetails()
     {
         return view('blogDetails');
-       
     }
 
     public function bot($method, $params = [])
@@ -59,7 +61,7 @@ class MainController extends Controller
 
     public function send_massage(Request $request)
     {
-        
+
         $this->bot('sendMessage', [
             'chat_id' => -1001754275733,
             'text' => "😆 Name: $request->name\n😆 Email: $request->email\n😆 Text: $request->message",

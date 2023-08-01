@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
+use App\Models\Tag;
 
 class Product extends Model
 {
@@ -20,6 +21,7 @@ class Product extends Model
         'desc_uz',
         'desc_en',
         'desc_ru',
+        'is_spacial',
         'multi_img',
         'meta_title',
         'meta_description',
@@ -46,6 +48,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 
 

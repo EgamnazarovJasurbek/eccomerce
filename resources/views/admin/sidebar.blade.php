@@ -25,6 +25,10 @@
             <li class="dropdown">
                 <a href="{{ route('admin.products.index') }}"><i data-feather="sun"></i><span>Products</span></a>
             </li>
+            
+            <li class="dropdown">
+                <a href="{{ route('admin.tags.index') }}"><i data-feather="monitor"></i><span>tags</span></a>
+            </li>
 
             </li>
         </ul>

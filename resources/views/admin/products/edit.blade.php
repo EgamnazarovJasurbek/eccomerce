@@ -3,7 +3,9 @@
 @section('title')
     Update Category
 @endsection
-
+@section('css')
+  <link rel="stylesheet" href="/admin/assets/bundles/select2/dist/css/select2.min.css">
+@endsection
 @section('content')
     <div class="main-content">
         <div class="row">
@@ -22,6 +24,16 @@
                                     @foreach ($categories as $category)
                                         <option @if ($product->category_id == $category->id) selected @endif
                                             value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            {{-- menus --}}
+                            <div class="form-group">
+
+                                <label>Menus selected </label>
+                                <select id="" name="menus[]" class="form-control select2" multiple="">
+                                    @foreach ($menus as $menu)
+                                        <option  @if(in_array($menu->id, $product->menus->pluck('id')->toArray())) selected @endif value="{{ $menu->id }}">{{ $menu->name_uz }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -86,6 +98,14 @@
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
+                            {{-- is_spacial --}}
+                            <div class="form-group">
+                                <div class="control-label">Muhimmi ?</div>
+                                <label class="custom-switch mt-2">
+                                  <input type="checkbox" value="1" {{ $product->is_spacial == 1 ? 'checked' : '' }} name="is_spacial" class="custom-switch-input">
+                                  <span class="custom-switch-indicator"></span>
+                                </label>
+                              </div>
                             {{-- Slug --}}
                             <div class="form-group">
                                 <label>Slug</label>
@@ -116,4 +136,7 @@
             </div>
         </div>
     </div>
+@endsection
+@section('js')
+<script src="/admin/assets/bundles/select2/dist/js/select2.full.min.js"></script>
 @endsection

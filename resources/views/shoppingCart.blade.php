@@ -11,15 +11,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3">
-                        <div class="hero__categories">
-                            <div class="hero__categories__all">
-                                <i class="fa fa-bars"></i>
-                                <span>All departments</span>
-                            </div>
-                            <ul>
-                                
-                            </ul>
-                        </div>
+                        @include('sections.category')
+                        
                     </div>
                     <div class="col-lg-9">
                         <div class="hero__search">

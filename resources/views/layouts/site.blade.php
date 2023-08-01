@@ -114,11 +114,12 @@
                             </div>
                             <div class="header__top__right__language">
                                 <img src="/allStyle/img/language.png" alt="">
-                                <div>English</div>
+                                <div>{{ \App::getLocale() }}</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="#">Spanis</a></li>
-                                    <li><a href="#">English</a></li>
+                                    <li><a href="/lang/uz">Uzbek</a></li>
+                                    <li><a href="lang/en">English</a></li>
+                                    <li><a href="lang/ru">Russian</a></li>
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
@@ -140,11 +141,11 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="{{ route('shopGrid') }}">Shop</a></li>
+                            <li><a href="{{ route('shoppingCart') }}">Shop</a></li>
                             <li><a href="#">Pages</a>
                                 <ul class="header__menu__dropdown">
                                     <li><a href="{{ route('shopDetails') }}">Shop Details</a></li>
-                                    <li><a href="{{ route('shoppingCart') }}">Shoping Cart</a></li>
+                                    {{-- <li><a href="{{ route('shoppingCart') }}">Shoping Cart</a></li> --}}
                                     <li><a href="{{ route('checkOut') }}">Check Out</a></li>
                                     <li><a href="{{ route('blogDetails') }}">Blog Details</a></li>
                                 </ul>
@@ -169,6 +170,9 @@
             </div>
         </div>
     </header>
+
+  
+    <!-- Hero Section End -->
     <!-- Header Section End -->
 
 

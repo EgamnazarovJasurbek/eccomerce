@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Product;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Product;
 
-class Tag extends Model
+class Menu extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name_uz',
         'name_ru',
@@ -18,8 +19,11 @@ class Tag extends Model
         'meta_description',
         'meta_keywords',
     ];
-    public function products()
-    {
-        return $this->belongsToMany(Product::class);
+
+
+    public function products(){
+
+        return $this->hasMany(Product::class);
     }
+
 }

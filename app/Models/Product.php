@@ -5,14 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
-use App\Models\Tag;
+use App\Models\Menu;
 
 class Product extends Model
 {
     use HasFactory;
-
     protected $fillable = [
         'category_id',
+        'menu_id',
         'title_uz',
         'title_en',
         'title_ru',
@@ -20,6 +20,7 @@ class Product extends Model
         'price',
         'desc_uz',
         'desc_en',
+        'view',
         'desc_ru',
         'is_spacial',
         'multi_img',
@@ -49,10 +50,12 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function tags()
+
+    public function menu()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this->belongsTo(Menu::class);
     }
+
 
 
 }

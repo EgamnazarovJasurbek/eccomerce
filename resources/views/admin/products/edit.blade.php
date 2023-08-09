@@ -27,16 +27,6 @@
                                     @endforeach
                                 </select>
                             </div>
-                            {{-- menus --}}
-                            <div class="form-group">
-
-                                <label>Menus selected </label>
-                                <select id="" name="menus[]" class="form-control select2" multiple="">
-                                    @foreach ($menus as $menu)
-                                        <option  @if(in_array($menu->id, $product->menus->pluck('id')->toArray())) selected @endif value="{{ $menu->id }}">{{ $menu->name_uz }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
                             {{-- Add Category Name --}}
                             <div class="form-group">
                                 <label>Name(Uz)</label>

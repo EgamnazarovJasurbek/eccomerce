@@ -10,11 +10,11 @@
     <section class="section">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.tags.store') }}" method="POST">
+                <form action="{{ route('admin.menu.store') }}" method="POST">
                     @csrf
                     <div class="card">
                         <div class="card-header">
-                            <h4>Add tags</h4>
+                            <h4>Add Menu</h4>
                         </div>
                         <div class="card-body">
                             {{-- Add Category Name --}}

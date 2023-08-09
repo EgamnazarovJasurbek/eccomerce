@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Product;
-use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -28,9 +27,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $tags = Tag::all();
+        $menus = Menu::all();
         $categories = Category::all();
-        return view('admin.products.create', compact('categories','tags'));
+        return view('admin.products.create', compact('categories','menus'));
     }
 
     /**
@@ -38,13 +37,12 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-
         $requestData = $request->all();
 
-        if(empty($request->is_spacial)){
+        if (empty($request->is_spacial)) {
             $requestData['is_spacial'] = 0;
         }
-      
+
 
         if ($request->hasFile('image')) {
             $imageName = time() . '_' . $request->file('image')->getClientOriginalName();
@@ -56,7 +54,6 @@ class ProductController extends Controller
         $requestData['slug'] = Str::slug($requestData['title_uz']);
 
         $product = new Product();
-        $product->tags()->attach($request->tags);
         $product->storeProduct($requestData);
 
         return redirect()->route('admin.products.index')->with('success', "Mahsulot qo'shildi✔️");
@@ -67,7 +64,7 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        return view("admin.products.show",compact('product'));
+        return view("admin.products.show", compact('product'));
     }
 
     /**
@@ -76,8 +73,7 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         $categories = Category::all();
-        $menus = Menu::all();
-        return view('admin.products.edit', compact('product', 'categories','menus'));
+        return view('admin.products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -111,9 +107,10 @@ class ProductController extends Controller
             $data['multi_img'] = $product->multi_img;
         }
 
-        if(empty($request->is_spacial)){
+        if (empty($request->is_spacial)) {
             $requestData['is_spacial'] = 0;
         }
+
         // Yangi ma'lumotlar bilan mahsulotni yangilaymiz
         $product->update($data);
 
@@ -123,24 +120,24 @@ class ProductController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(string $id)
-{
-    // Mahsulotni id bo'yicha topib olib olamiz
-    $product = Product::findOrFail($id);
+    {
+        // Mahsulotni id bo'yicha topib olib olamiz
+        $product = Product::findOrFail($id);
 
-    // Eski rasmlarning manzillarini ma'lumotlar omboridan olamiz
-    $oldImages = explode('|', $product->multi_img);
+        // Eski rasmlarning manzillarini ma'lumotlar omboridan olamiz
+        $oldImages = explode('|', $product->multi_img);
 
-    // Eski rasmlarni o'chirish
-    foreach ($oldImages as $oldImage) {
-        $oldImagePath = public_path('Products/image/' . $oldImage);
-        if (File::exists($oldImagePath)) {
-            File::delete($oldImagePath);
+        // Eski rasmlarni o'chirish
+        foreach ($oldImages as $oldImage) {
+            $oldImagePath = public_path('Products/image/' . $oldImage);
+            if (File::exists($oldImagePath)) {
+                File::delete($oldImagePath);
+            }
         }
+
+        // Mahsulotni o'chiramiz
+        $product->delete();
+
+        return redirect()->route('admin.products.index')->with('success', "Mahsulot o'chirildi");
     }
-
-    // Mahsulotni o'chiramiz
-    $product->delete();
-
-    return redirect()->route('admin.products.index')->with('success', "Mahsulot o'chirildi");
-}
 }

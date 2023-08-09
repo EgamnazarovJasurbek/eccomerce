@@ -28,23 +28,15 @@
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- menus --}}
-                                <div class="form-group">
-
-                                    <label>Tags selected </label>
-                                    <select id="" name="tags[]" class="form-control select2" multiple="">
-                                        @foreach ($tags as $tag)
-                                            <option value="{{ $tag->id }}">{{ $tag->name_uz }}</option>
+                                 {{-- Menu Id --}}
+                                 <div class="form-group">
+                                    <label>Menu </label>
+                                    <select class="form-control form-select" name="menu_id">
+                                        @foreach ($menus as $menu)
+                                            <option value="{{ $menu->id }}">{{ $menu->name_uz }}</option>
                                         @endforeach
                                     </select>
                                 </div>
-                                {{-- <div class="form-group">
-                                    <label>Category Id</label>
-                                    <input type="text" class="form-control" name="category_id" value="{{ old('category_id') }}">
-                                    @error('category_id')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div> --}}
                                 {{-- Add Product Name --}}
                                 <div class="form-group">
                                     <label>Name (Uz)</label>

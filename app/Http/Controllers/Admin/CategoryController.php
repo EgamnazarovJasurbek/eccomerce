@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Str;
 class CategoryController extends Controller
 {
     /**
@@ -31,7 +31,7 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
-        $requestData['slug'] =\Str::slug($requestData['name_uz']);
+        $requestData['slug'] = Str::slug($requestData['name_uz']);
         Category::create($requestData);
         return redirect()->route('admin.categories.index')->with('success', "Category qo'shildi");
     }
@@ -59,7 +59,7 @@ class CategoryController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->all();
-        $requestData['slug'] =\Str::slug($request->name_uz);
+        $requestData['slug'] = Str::slug($request->name_uz);
         $category = Category::findOrFail($id);
         $category->update($requestData);
         return redirect()->route('admin.categories.index')->with('success', "Tahrirlandi👍 ");

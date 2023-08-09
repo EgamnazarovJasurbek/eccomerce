@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Tag;
+use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
-class TagsController extends Controller
+class MenuController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $tags = Tag::all();
-       return view('admin.tags.index',compact('tags'));
+        $menus = Menu::all();
+        return view('admin.menu.index',compact('menus'));
     }
 
     /**
@@ -22,7 +23,7 @@ class TagsController extends Controller
      */
     public function create()
     {
-        return view('admin.tags.create');
+        return view('admin.menu.create');
     }
 
     /**
@@ -31,9 +32,9 @@ class TagsController extends Controller
     public function store(Request $request)
     {
         $requestData = $request->all();
-        $requestData['slug'] =\Str::slug($requestData['name_uz']);
-        Tag::create($requestData);
-        return redirect()->route('admin.tags.index')->with('success', "Tag qo'shildi");
+        $requestData['slug'] = Str::slug($requestData['name_uz']);
+        Menu::create($requestData);
+        return redirect()->route('admin.menu.index')->with('success', "Category qo'shildi");
     }
 
     /**
@@ -49,8 +50,8 @@ class TagsController extends Controller
      */
     public function edit(string $id)
     {
-        $tag = Tag::findOrFail($id);
-        return view('admin.tags.edit',compact('tag'));
+        $menu = Menu::findOrFail($id);
+        return view('admin.menu.edit',compact('menu'));
     }
 
     /**
@@ -59,10 +60,10 @@ class TagsController extends Controller
     public function update(Request $request, string $id)
     {
         $requestData = $request->all();
-        $requestData['slug'] =\Str::slug($request->name_uz);
-        $tag = Tag::findOrFail($id);
-        $tag->update($requestData);
-        return redirect()->route('admin.tags.index')->with('success', "Tahrirlandi👍 ");
+        $requestData['slug'] = Str::slug($request->name_uz);
+        $menu = Menu::findOrFail($id);
+        $menu->update($requestData);
+        return redirect()->route('admin.menu.index')->with('success', "Tahrirlandi👍 ");
     }
 
     /**
@@ -70,8 +71,8 @@ class TagsController extends Controller
      */
     public function destroy(string $id)
     {
-        $tag = Tag::findOrFail($id);
-        $tag->delete();
-        return redirect()->route('admin.tags.index')->with('success', "O'chirildi✔️");
+        $menu = Menu::findOrFail($id);
+        $menu->delete();
+        return redirect()->route('admin.menu.index')->with('success', "O'chirildi✔️");
     }
 }

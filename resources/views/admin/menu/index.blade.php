@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    tags
+    Menu
 @endsection
 @section('content')
     <div class="main-content">
@@ -19,15 +19,15 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>tags Table</h3>
-                            <a href="{{ route('admin.tags.create') }}" class="btn btn-primary ml-auto">Create Menus</a>
+                            <h3>Menu Table</h3>
+                            <a href="{{ route('admin.menu.create') }}" class="btn btn-primary ml-auto">Create Menu</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table table-bordered table-md">
                                     <tbody>
                                         <tr>
-                                            <th>Id</th>
+                                            <th>id</th>
                                             <th>Nomi_uz</th>
                                             <th>Nomi_en</th>
                                             <th>Nomi_ru</th>
@@ -35,18 +35,18 @@
                                             {{-- <th>Created At</th> --}}
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($tags as $tag)
+                                        @foreach ($menus as $menu)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $tag->name_uz }}</td>
-                                                <td>{{ $tag->name_en }}</td>
-                                                <td>{{ $tag->name_ru }}</td>
-                                                <td>{{ $tag->slug }}</td>
+                                                <td>{{ $menu->name_uz }}</td>
+                                                <td>{{ $menu->name_en }}</td>
+                                                <td>{{ $menu->name_ru }}</td>
+                                                <td>{{ $menu->slug }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.tags.edit', $tag->id) }}"
+                                                    <a href="{{ route('admin.menu.edit', $menu->id) }}"
                                                         class="btn btn-success">Edit</a>
                                                     <form style="display: inline"
-                                                        action="{{ route('admin.tags.destroy', $tag->id) }}"
+                                                        action="{{ route('admin.menu.destroy', $menu->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

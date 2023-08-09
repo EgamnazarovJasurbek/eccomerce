@@ -1,12 +1,9 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
-
-
+use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
-use App\Http\Controllers\Admin\TagsController;
 use App\Http\Controllers\MainController;
-
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +21,7 @@ Route::get('/lang/{lang}', function ($lang) {
     session(['lang'=>$lang]);
     return back(); 
  }); 
+ 
 //Site uchun
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/category/{slug}', [MainController::class, 'categoryProducts'])->name('categoryProducts');
@@ -36,15 +34,15 @@ Route::get('/shopDetails', [MainController::class, 'shopDetails'])->name('shopDe
 Route::get('/blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');
 Route::post('/send_post',[MainController::class,'send_massage'] )->name('send_message');
 
-//Admin uchun
 
+//Admin uchun
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
     Route::get('/dashboard', function () {
         return view('admin.dashboard');
     })->name('dashboard');
     
-    Route::resource('tags', TagsController::class);
     Route::resource('categories', CategoryController::class);
+    Route::resource('menu', MenuController::class);
     Route::resource('products', ProductController::class);
 });
 

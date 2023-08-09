@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Menu;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -12,9 +13,12 @@ class MainController extends Controller
 
     public function index()
     {
-        
+        $products = Product::all();
+        $menus = Menu::all();
         $categories = Category::all();
-        return view('index',compact('categories'));
+        $moreViews = Product::limit(8)->orderBy('view','DESC')->get();
+        $specials = Product::where('is_spacial', 1)->limit(3)->latest()->get();
+        return view('index',compact('categories','menus','products','moreViews','specials'));
     }
 
     public function categoryShop()

@@ -140,18 +140,18 @@
                 <div class="col-lg-6">
                     <nav class="header__menu">
                         <ul>
-                            <li><a href="{{ route('index') }}">Home</a></li>
-                            <li><a href="{{ route('shoppingCart') }}">Shop</a></li>
-                            <li><a href="#">Pages</a>
+                            <li><a href="{{ route('index') }}">@lang('words.home')</a></li>
+                            <li><a href="{{ route('shoppingCart') }}">@lang('words.shop')</a></li>
+                            <li><a href="#">@lang('words.pages')</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="{{ route('shopDetails') }}">Shop Details</a></li>
+                                    <li><a href="{{ route('shopDetails') }}">@lang('words.shopDetail')</a></li>
                                     {{-- <li><a href="{{ route('shoppingCart') }}">Shoping Cart</a></li> --}}
-                                    <li><a href="{{ route('checkOut') }}">Check Out</a></li>
-                                    <li><a href="{{ route('blogDetails') }}">Blog Details</a></li>
+                                    <li><a href="{{ route('checkOut') }}">@lang('words.checkOut')</a></li>
+                                    <li><a href="{{ route('blogDetails') }}">@lang('words.blogDetail')</a></li>
                                 </ul>
                             </li>
-                            <li><a href="{{ route('blog') }}">Blog</a></li>
-                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li><a href="{{ route('blog') }}">@lang('words.blog')</a></li>
+                            <li><a href="{{ route('contact') }}">@lang('words.contact')</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -161,7 +161,7 @@
                             <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
                             <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
                         </ul>
-                        <div class="header__cart__price">item: <span>$150.00</span></div>
+                        <div class="header__cart__price">@lang('words.item'): <span>$150.00</span></div>
                     </div>
                 </div>
             </div>

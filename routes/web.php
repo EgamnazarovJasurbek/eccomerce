@@ -21,7 +21,7 @@ Route::get('/lang/{lang}', function ($lang) {
     session(['lang'=>$lang]);
     return back(); 
  }); 
- 
+
 //Site uchun
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/category/{slug}', [MainController::class, 'categoryProducts'])->name('categoryProducts');

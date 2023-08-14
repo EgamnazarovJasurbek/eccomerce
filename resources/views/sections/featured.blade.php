@@ -3,11 +3,11 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="section-title">
-                    <h2>Featured Product</h2>
+                    <h2>@lang('words.featuredFruite')</h2>
                 </div>
                 <div class="featured__controls">
                     <ul>
-                        <li class="active" data-filter="*">All</li>
+                        <li class="active" data-filter="*">@lang('words.all')</li>
                         @foreach ($menus as $menu)
                             <li data-filter=".{{ $menu->name_uz }}">{{ $menu->name_uz }}</li>
                         @endforeach

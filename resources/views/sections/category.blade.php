@@ -1,7 +1,7 @@
 <div class="hero__categories">
     <div class="hero__categories__all">
         <i class="fa fa-bars"></i>
-        <span>All departments</span>
+        <span>@lang('words.allDepartments')</span>
     </div>
     <ul>
         @foreach ($categories as $category)

@@ -14,5 +14,6 @@ return [
     'allDepartments' => "Barhca bo'limlar",
     'featuredFruite' => 'Tanlangan mahsulot',
     'all' => 'Barchasi',
+    'products' => 'Mahsulotlar',
 
 ];

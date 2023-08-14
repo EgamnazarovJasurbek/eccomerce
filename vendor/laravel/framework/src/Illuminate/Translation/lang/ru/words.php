@@ -14,6 +14,7 @@ return [
     'allDepartments' => 'Все отделы',
     'featuredFruite' => 'Рекомендуемый продукт',
     'all' => 'Все',
+    'products' => 'Продукт',
 
     
 ];

@@ -14,4 +14,5 @@ return [
     'allDepartments' => 'All departments',
     'featuredFruite' => 'Featured Product',
     'all' => 'All',
+    'products' => 'Products',
 ];

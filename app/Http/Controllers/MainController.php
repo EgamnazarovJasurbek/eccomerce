@@ -17,8 +17,10 @@ class MainController extends Controller
         $menus = Menu::all();
         $categories = Category::all();
         $moreViews = Product::limit(8)->orderBy('view','DESC')->get();
-        $specials = Product::where('is_spacial', 1)->limit(3)->latest()->get();
-        return view('index',compact('categories','menus','products','moreViews','specials'));
+        $latestProducts = Product::limit(3)->latest()->get();
+        $topProducts= Product::where('is_spacial', '1')->limit(3)->get();
+        $reviewProducts= Product::where('is_spacial', '0')->limit(3)->get();
+        return view('index',compact('categories','menus','products','moreViews','latestProducts','topProducts','reviewProducts'));
     }
 
     public function categoryShop()

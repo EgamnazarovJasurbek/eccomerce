@@ -5,7 +5,7 @@
     </div>
     <ul>
         @foreach ($categories as $category)
-            <li><a href="{{ route('categoryShop', $category->slug) }}">{{ $category['name_' . \App::getLocale()] }}</a>
+            <li><a href="{{ route('categoryProducts', $category->slug) }}">{{ $category['name_' . \App::getLocale()] }}</a>
             </li>
         @endforeach
     </ul>

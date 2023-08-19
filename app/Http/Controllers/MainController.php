@@ -15,18 +15,20 @@ class MainController extends Controller
     {
         $products = Product::all();
         $menus = Menu::all();
-        $categories = Category::all();
-        $moreViews = Product::limit(8)->orderBy('view','DESC')->get();
+
+        $moreViews = Product::limit(8)->orderBy('view', 'DESC')->get();
         $latestProducts = Product::limit(3)->latest()->get();
-        $topProducts= Product::where('is_spacial', '1')->limit(3)->get();
-        $reviewProducts= Product::where('is_spacial', '0')->limit(3)->get();
-        return view('index',compact('categories','menus','products','moreViews','latestProducts','topProducts','reviewProducts'));
+        $topProducts = Product::where('is_spacial', '1')->limit(3)->get();
+        $reviewProducts = Product::where('is_spacial', '0')->limit(3)->get();
+        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts'));
     }
 
-    public function categoryShop()
+    public function categoryProducts($slug)
     {
-        return view('categoryShop');
+        $category = Category::where('slug', $slug)->first();
+        return view('categoryShop', compact('category'));
     }
+
 
     public function blog()
     {
@@ -38,9 +40,12 @@ class MainController extends Controller
         return view('contact');
     }
 
-    public function shopDetails()
+    public function shopDetails(Product $product)
     {
-        return view('shopDetails');
+        dd($product);
+        // $product = Product::where('slug', $slug)->first();
+    
+        return view('shopDetails', compact('product'));
     }
 
     public function shoppingCart()
@@ -76,6 +81,3 @@ class MainController extends Controller
         return back();
     }
 }
-
-
-// Ozgartildi

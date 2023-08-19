@@ -6,7 +6,7 @@
                     <div class="col-lg-3">
                         <div class="categories__item set-bg"
                             data-setbg="Products/image/{{ explode('|', $moreView->multi_img)[0] }}">
-                            <h5><a href="{{ route('shopDetails') }}">{{ $moreView['title_' . \App::getLocale()] }}</a></h5>
+                            <h5><a href="{{ route('shopDetails', $moreView->slug) }}">{{ $moreView['title_' . \App::getLocale()] }}</a></h5>
                         </div>
                     </div>
                 @endforeach

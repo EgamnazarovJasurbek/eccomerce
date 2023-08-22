@@ -25,7 +25,7 @@ Route::get('/lang/{lang}', function ($lang) {
 //Site uchun
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/category/{slug}', [MainController::class, 'categoryProducts'])->name('categoryProducts');
-Route::get('/product/{slug?}', [MainController::class, 'shopDetails'])->name('shopDetails');
+Route::get('/product/{slug?}', [MainController::class, 'shopDetails'])->name('shopDetails'); // jjj
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');

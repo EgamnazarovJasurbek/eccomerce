@@ -22,9 +22,9 @@ return new class extends Migration
             $table->string('desc_en');
             $table->string('price')->number();
             $table->integer('view')->deafult(0);
-            $table->string('slug')->unique();
+            $table->string('slug')->nullable();
             $table->string('desc_ru');
-            $table->string('multi_img')->nulalbe();
+            $table->string('multi_img')->nullable();
             $table->string('meta_title')->nullable();
             $table->string('meta_description')->nullable();
             $table->string('meta_keywords')->nullable();

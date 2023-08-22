@@ -15,7 +15,6 @@ class MainController extends Controller
     {
         $products = Product::all();
         $menus = Menu::all();
-
         $moreViews = Product::limit(8)->orderBy('view', 'DESC')->get();
         $latestProducts = Product::limit(3)->latest()->get();
         $topProducts = Product::where('is_spacial', '1')->limit(3)->get();
@@ -34,17 +33,19 @@ class MainController extends Controller
     {
         return view('blog');
     }
+    public function shop()
+    {
+        return view('shop');
+    }
 
     public function contact()
     {
         return view('contact');
     }
 
-    public function shopDetails(Product $product)
+    public function shopDetails($slug = null)
     {
-        dd($product);
-        // $product = Product::where('slug', $slug)->first();
-    
+        $product = Product::where('slug', $slug)->first();
         return view('shopDetails', compact('product'));
     }
 

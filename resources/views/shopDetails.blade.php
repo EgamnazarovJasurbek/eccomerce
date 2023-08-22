@@ -94,8 +94,8 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${{ $product->price }}</div>
-                        <p>{{ $product->desc_uz }}</p>
+                        <div class="product__details__price">${{ $product->price}}</div>
+                        <p>{{ $product->desc_uz}}</p>
                         <div class="product__details__quantity">
                             <div class="quantity">
                                 <div class="pro-qty">

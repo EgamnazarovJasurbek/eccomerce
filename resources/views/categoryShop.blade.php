@@ -193,9 +193,7 @@
                                         </ul>
                                     </div>
                                     <div class="product__item__text">
-                                        <h6><a href="{{ route('shopDetails', ['slug' => $product->slug]) }}">{{ $product->title_uz }}</a></h6>
-
-                                        {{-- <h6><a href="{{ route('shopDetails', $product->slug) }}">{{ $product->title_uz }}</a></h6> --}}
+                                        <h6><a href="{{ route('shopDetails', $product->slug) }}">{{ $product->title_uz }}</a></h6>
                                         <h5>${{ $product->price }}</h5>
                                     </div>
                                 </div>

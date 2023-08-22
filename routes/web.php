@@ -20,14 +20,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/lang/{lang}', function ($lang) {
     session(['lang'=>$lang]);
     return back(); 
- }); 
+ })->name('lang'); 
 
 //Site uchun
 Route::get('/', [MainController::class, 'index'])->name('index');
 Route::get('/category/{slug}', [MainController::class, 'categoryProducts'])->name('categoryProducts');
-Route::get('/products', [MainController::class, 'shopDetails'])->name('shopDetails'); // Slug qoshish kk Nurullo aka bomyaptiku
+Route::get('/product/{slug?}', [MainController::class, 'shopDetails'])->name('shopDetails');
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
+Route::get('/shop', [MainController::class, 'shop'])->name('shop');
 Route::get('/shoppingCart', [MainController::class, 'shoppingCart'])->name('shoppingCart');
 Route::get('/checkOut', [MainController::class, 'checkOut'])->name('checkOut');
 Route::get('/blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');

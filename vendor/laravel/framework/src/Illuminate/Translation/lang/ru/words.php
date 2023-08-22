@@ -7,7 +7,7 @@ return [
     'blog' => 'Блог',
     'contact' => 'контакт',
     'shopDetail' => 'Детали магазина',
-    'checkOut' => "Проверить",
+    'checkOut' => "Покупка",
     'blogDetail' => 'Подробности блога',
     'search' => 'Поиск',
     'fruitFresh' => 'ФРУКТЫ СВЕЖИЕ',
@@ -15,6 +15,7 @@ return [
     'featuredFruite' => 'Рекомендуемый продукт',
     'all' => 'Все',
     'products' => 'Продукт',
+    'shoppingCart' => 'Корзина'
 
     
 ];

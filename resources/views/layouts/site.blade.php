@@ -113,13 +113,13 @@
                                 <a href="#"><i class="fa fa-pinterest-p"></i></a>
                             </div>
                             <div class="header__top__right__language">
-                                <img src="/allStyle/img/language.png" alt="">
-                                <div>{{ \App::getLocale() }}</div>
+                                <img src="/allStyle/img/{{session('lang')}}.png" alt="" width="35" height="auto">  
+                                <div style="text-transform: uppercase">{{ \App::getLocale() }}</div>
                                 <span class="arrow_carrot-down"></span>
                                 <ul>
-                                    <li><a href="/lang/uz">Uzbek</a></li>
-                                    <li><a href="lang/en">English</a></li>
-                                    <li><a href="lang/ru">Russian</a></li>
+                                    <li><a href="{{ route('lang', 'uz') }}">Uzbek</a></li>
+                                    <li><a href="{{ route('lang', 'en') }}">English</a></li>
+                                    <li><a href="{{ route('lang', 'ru') }}">Russian</a></li>
                                 </ul>
                             </div>
                             <div class="header__top__right__auth">
@@ -141,11 +141,11 @@
                     <nav class="header__menu">
                         <ul>
                             <li><a href="{{ route('index') }}">@lang('words.home')</a></li>
-                            <li><a href="{{ route('shoppingCart') }}">@lang('words.shop')</a></li>
+                            <li><a href="{{ route('shop') }}">@lang('words.shop')</a></li>
                             <li><a href="#">@lang('words.pages')</a>
                                 <ul class="header__menu__dropdown">
-                                    <li><a href="{{ route('shopDetails') }}">@lang('words.shopDetail')</a></li>
-                                    {{-- <li><a href="{{ route('shoppingCart') }}">Shoping Cart</a></li> --}}
+                                    {{-- <li><a href="{{ route('shopDetails') }}">@lang('words.shopDetail')</a></li> --}}
+                                    <li><a href="{{ route('shoppingCart') }}">@lang('words.shoppingCart')</a></li>
                                     <li><a href="{{ route('checkOut') }}">@lang('words.checkOut')</a></li>
                                     <li><a href="{{ route('blogDetails') }}">@lang('words.blogDetail')</a></li>
                                 </ul>
@@ -171,7 +171,7 @@
         </div>
     </header>
 
-  
+
     <!-- Hero Section End -->
     <!-- Header Section End -->
 

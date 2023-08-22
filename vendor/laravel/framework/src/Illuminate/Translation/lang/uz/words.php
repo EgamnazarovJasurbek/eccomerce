@@ -7,7 +7,7 @@ return [
     'blog' => 'blog',
     'contact' => 'aloqa',
     'shopDetail' => "do'kon tafsilotlari",
-    'checkOut' => "Haridlar",
+    'checkOut' => "Harid qilish",
     'blogDetail' => 'Blog tafsilotlari',
     'search' => 'Qidirmoq',
     'fruitFresh' => 'YANGI MEVVA',
@@ -15,5 +15,6 @@ return [
     'featuredFruite' => 'Tanlangan mahsulot',
     'all' => 'Barchasi',
     'products' => 'Mahsulotlar',
+    'shoppingCart' => 'Savat'
 
 ];

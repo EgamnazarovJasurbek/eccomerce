@@ -15,4 +15,8 @@ return [
     'featuredFruite' => 'Featured Product',
     'all' => 'All',
     'products' => 'Products',
+    'shoppingCart' => 'shopping Cart'
+    
+
+
 ];

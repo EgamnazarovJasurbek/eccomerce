@@ -25,7 +25,8 @@ class MainController extends Controller
     public function categoryProducts($slug)
     {
         $category = Category::where('slug', $slug)->first();
-        return view('categoryShop', compact('category'));
+        $saleProducts = Product::where('price', '<=', 28000)->get();
+        return view('categoryShop', compact('category', 'saleProducts'));
     }
 
 
@@ -35,7 +36,9 @@ class MainController extends Controller
     }
     public function shop()
     {
-        return view('shop');
+        $products = Product::paginate(12);
+        $saleProducts = Product::where('price', '<=', 28000)->get();
+        return view('shop', compact('products','saleProducts'));
     }
 
     public function contact()
@@ -46,7 +49,8 @@ class MainController extends Controller
     public function shopDetails($slug = null)
     {
         $product = Product::where('slug', $slug)->first();
-        return view('shopDetails', compact('product'));
+        $otherProducts = Product::where('category_id', $product->category_id)->where('id', '!=', $product->id)->limit(3)->get();
+        return view('shopDetails', compact('product', 'otherProducts'));
     }
 
     public function shoppingCart()

@@ -12,7 +12,7 @@
                                 <div class="owl-item cloned" style="width: 360px;">
                                     @foreach ($latestProducts as $item)
                                         <div class="latest-prdouct__slider__item">
-                                            <a href="#" class="latest-product__item">
+                                            <a href="{{ route('shopDetails', $item->slug) }}" class="latest-product__item">
                                                 <div class="latest-product__item__pic">
                                                     <img src="Products/image/{{ explode('|', $item->multi_img)[0] }}"
                                                         alt="">
@@ -42,7 +42,7 @@
                                 <div class="owl-item cloned" style="width: 360px;">
                                     @foreach ($topProducts as $item)
                                         <div class="latest-prdouct__slider__item">
-                                            <a href="#" class="latest-product__item">
+                                            <a href="{{ route('shopDetails', $item->slug) }}" class="latest-product__item">
                                                 <div class="latest-product__item__pic">
                                                     <img src="Products/image/{{ explode('|', $item->multi_img)[0] }}"
                                                         alt="">
@@ -72,7 +72,7 @@
                                 <div class="owl-item cloned" style="width: 360px;">
                                     @foreach ($reviewProducts as $item)
                                         <div class="latest-prdouct__slider__item">
-                                            <a href="#" class="latest-product__item">
+                                            <a href="{{ route('shopDetails', $item->slug) }}" class="latest-product__item">
                                                 <div class="latest-product__item__pic">
                                                     <img src="Products/image/{{ explode('|', $item->multi_img)[0] }}"
                                                         alt="">

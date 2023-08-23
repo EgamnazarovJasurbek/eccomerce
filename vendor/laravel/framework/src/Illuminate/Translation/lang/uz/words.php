@@ -11,7 +11,7 @@ return [
     'blogDetail' => 'Blog tafsilotlari',
     'search' => 'Qidirmoq',
     'fruitFresh' => 'YANGI MEVVA',
-    'allDepartments' => "Barhca bo'limlar",
+    'allDepartments' => "Barcha bo'limlar",
     'featuredFruite' => 'Tanlangan mahsulot',
     'all' => 'Barchasi',
     'products' => 'Mahsulotlar',

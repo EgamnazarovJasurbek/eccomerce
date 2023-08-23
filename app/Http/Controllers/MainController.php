@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Menu;
 use App\Models\Product;
@@ -13,13 +14,14 @@ class MainController extends Controller
 
     public function index()
     {
+        $banners = Banner::all();
         $products = Product::all();
         $menus = Menu::all();
         $moreViews = Product::limit(8)->orderBy('view', 'DESC')->get();
         $latestProducts = Product::limit(3)->latest()->get();
         $topProducts = Product::where('is_spacial', '1')->limit(3)->get();
         $reviewProducts = Product::where('is_spacial', '0')->limit(3)->get();
-        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts'));
+        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts','banners'));
     }
 
     public function categoryProducts($slug)

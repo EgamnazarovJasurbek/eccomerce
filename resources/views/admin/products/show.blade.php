@@ -42,14 +42,19 @@
                                         <th>Category</th> <td>{!! $product->category->name_uz !!}</td>
                                     </tr>
                                     <tr>
-                                        <th>Tag</th> <td> @foreach ($product->tags as $tag)
-                                            {{ $tag->name_uz }}
-                                        @endforeach </td>
+                                        <th>Menu</th> <td>{!! $product->menu->name_uz !!}</td>
                                     </tr>
-                                    
+                                   
+                                   
                                     <tr>
-                                        <th>Image</th> <td ><img src="/site/images/posts/{{ $product->image }}" width="100px" height="100px" alt=""></td>
+                                        <th>Image</th> 
+                                        <td>
+                                            @foreach (explode('|', $product->multi_img) as $image)
+                                                <img src="{{ asset('Products/image/' . $image) }}" alt="Product Image" width="50px" height="50px">
+                                            @endforeach
+                                        </td>
                                     </tr>
+                                   
                                     <tr>
                                         <th>Slug</th> <td>{{ $product->slug }}</td>
                                     </tr>

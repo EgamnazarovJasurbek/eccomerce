@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Admin\BannersController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
@@ -44,6 +46,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('categories', CategoryController::class);
     Route::resource('menu', MenuController::class);
     Route::resource('products', ProductController::class);
+    Route::resource('banners', BannersController::class);
 });
 
 Route::middleware('auth')->group(function () {

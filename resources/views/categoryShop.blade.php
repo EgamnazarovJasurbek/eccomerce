@@ -34,7 +34,6 @@
             <div class="row">
                 <div class="col-lg-3">
                     @include('sections.category')
-
                 </div>
                 <div class="col-lg-9">
                     @include('sections.search')

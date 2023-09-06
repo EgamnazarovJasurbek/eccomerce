@@ -31,11 +31,12 @@ Route::get('/product/{slug?}', [MainController::class, 'shopDetails'])->name('sh
 Route::get('/blog', [MainController::class, 'blog'])->name('blog');
 Route::get('/contact', [MainController::class, 'contact'])->name('contact');
 Route::get('/shop', [MainController::class, 'shop'])->name('shop');
-Route::get('/shoppingCart', [MainController::class, 'shoppingCart'])->name('shoppingCart');
 Route::get('/checkOut', [MainController::class, 'checkOut'])->name('checkOut');
 Route::get('/blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');
+Route::post('/likeProducts', [MainController::class, 'likeProducts'])->name('likeProducts');
 Route::post('/send_post',[MainController::class,'send_massage'] )->name('send_message');
-
+Route::get('/customerOrder/{id}', [MainController::class, 'customerOrder'])->name('customerOrder');
+Route::get('/shoppingCart', [MainController::class, 'shoppingCart'])->name('shoppingCart');
 
 //Admin uchun
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {

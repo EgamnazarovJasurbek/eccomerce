@@ -21,6 +21,7 @@
     }
 </style>
 
+
 @section('content')
     <!-- Hero Section Begin -->
     <section class="hero hero-normal">
@@ -75,17 +76,23 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <div class="product__details__price">${{ $product->price }}</div>
-                        <p class="product_categoryName">Category: <span>{{ $product->category->name_uz }}</span></p>
-                        <div class="product__details__quantity">
-                            <div class="quantity">
-                                <div class="pro-qty">
-                                    <input type="text" value="1">
+                        <form method="GET" action="{{ route('customerOrder', $product->id) }}">
+                            @csrf <!-- Add the CSRF token for security -->
+
+                            <div class="product__details__price">${{ $product->price }}</div>
+                            <p class="product_categoryName">Category: <span>{{ $product->category->name_uz }}</span></p>
+                            <div class="product__details__quantity">
+                                <div class="quantity">
+                                    <div class="pro-qty">
+                                        <input type="text" name="quantity" value="1">
+                                        <!-- Add a name attribute for the quantity input -->
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <a href="#" class="primary-btn">ADD TO CARD</a>
-                        <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                            {{-- <a href="" class="primary-btn">ADD TO CARD</a> --}}
+                            <button type="submit" class="primary-btn border-0 addBasket">ADD TO CART</button>
+                            <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
+                        </form>
                     </div>
                 </div>
                 <div class="col-lg-12">
@@ -137,7 +144,7 @@
                                 </ul>
                             </div>
                             <div class="product__item__text">
-                                <h6><a href="#">{{ $item->title_uz }}</a></h6>
+                                <h6><a href="{{ route('shopDetails', $item->slug) }}">{{ $item->title_uz }}</a></h6>
                                 <h5>{{ $item->price }}</h5>
                             </div>
                         </div>
@@ -147,6 +154,10 @@
         </div>
     </section>
     <!-- Related Product Section End -->
+
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
     <script>
         function showImageOverlay(imageSrc) {
@@ -175,5 +186,17 @@
                 document.body.removeChild(overlay);
             });
         }
+
+        $(document).ready(function() {
+            $('.addBasket').on('click', function() {
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: "Savatga Qo'shildi",
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+            });
+        });
     </script>
 @endsection

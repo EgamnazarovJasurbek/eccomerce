@@ -1,3 +1,8 @@
+@php
+    $selectedProducts = session()->get('selectedProducts', []);
+    $selectedProductsCount = count($selectedProducts);
+@endphp
+
 <!DOCTYPE html>
 <html lang="zxx">
 
@@ -144,7 +149,6 @@
                             <li><a href="{{ route('shop') }}">@lang('words.shop')</a></li>
                             <li><a href="#">@lang('words.pages')</a>
                                 <ul class="header__menu__dropdown">
-                                    {{-- <li><a href="{{ route('shopDetails') }}">@lang('words.shopDetail')</a></li> --}}
                                     <li><a href="{{ route('shoppingCart') }}">@lang('words.shoppingCart')</a></li>
                                     <li><a href="{{ route('checkOut') }}">@lang('words.checkOut')</a></li>
                                     <li><a href="{{ route('blogDetails') }}">@lang('words.blogDetail')</a></li>
@@ -158,8 +162,8 @@
                 <div class="col-lg-3">
                     <div class="header__cart">
                         <ul>
-                            <li><a href="#"><i class="fa fa-heart"></i> <span>1</span></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-bag"></i> <span>3</span></a></li>
+                            <li><a href="{{ route('likeProducts') }}"><i class="fa fa-heart"></i> <span>1</span></a></li>
+                            <li><a href="{{ route('shoppingCart') }}"><i class="fa fa-shopping-bag"></i> <span>{{ $selectedProductsCount }} </span></a></li>
                         </ul>
                         <div class="header__cart__price">@lang('words.item'): <span>$150.00</span></div>
                     </div>

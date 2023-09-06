@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Banner;
 use App\Models\Category;
 use App\Models\Menu;
+use App\Models\OrderCustomer;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
@@ -21,7 +22,7 @@ class MainController extends Controller
         $latestProducts = Product::limit(3)->latest()->get();
         $topProducts = Product::where('is_spacial', '1')->limit(3)->get();
         $reviewProducts = Product::where('is_spacial', '0')->limit(3)->get();
-        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts','banners'));
+        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts', 'banners'));
     }
 
     public function categoryProducts($slug)
@@ -40,13 +41,14 @@ class MainController extends Controller
     {
         $products = Product::paginate(12);
         $saleProducts = Product::where('price', '<=', 28000)->get();
-        return view('shop', compact('products','saleProducts'));
+        return view('shop', compact('products', 'saleProducts'));
     }
 
     public function contact()
     {
         return view('contact');
     }
+
 
     public function shopDetails($slug = null)
     {
@@ -70,6 +72,42 @@ class MainController extends Controller
         return view('blogDetails');
     }
 
+    public function customerOrder(Request $request, $id)
+{
+    $product = Product::find($id);
+    $selectedProducts = session()->get('selectedProducts', []);
+
+    // Seansda shunga o'xshash mahsulot mavjudligini tekshiring
+    $existingProduct = null;
+    $existingProductIndex = -1;
+    
+    foreach ($selectedProducts as $index => $selectedProduct) {
+        if ($selectedProduct->product_name === $product->title_uz) {
+            $existingProduct = $selectedProduct;
+            $existingProductIndex = $index;
+            break;
+        }
+    }
+
+    if ($existingProduct) {
+        // Mavjud mahsulot uchun miqdor yoki boshqa tegishli ma'lumotlarni yangilang
+        // Masalan: $existingProduct->miqdori += 1;
+    } else {
+        $cart = new OrderCustomer();
+        $cart->price = $product->price;
+        $cart->product_name = $product->title_uz;
+        $cart->img = $product->multi_img;
+        $cart->description_uz = $product->desc_uz;
+        $selectedProducts[] = $cart;
+        $cart->save();
+    }
+
+    session()->put('selectedProducts', $selectedProducts);
+
+    return back();
+}
+
+
     public function bot($method, $params = [])
     {
         $url = 'https://api.telegram.org/bot' . config('services.telegram.token') . '/' . $method;
@@ -87,4 +125,5 @@ class MainController extends Controller
 
         return back();
     }
+    
 }

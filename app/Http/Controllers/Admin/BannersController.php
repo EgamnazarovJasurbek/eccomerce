@@ -75,8 +75,12 @@ class BannersController extends Controller
             $request['image']=$banner->image;
         }
         $banner->update([
-            "name" =>$request->name,
-            "body" =>$request->body, 
+            "name_uz" =>$request->name_uz,
+            "name_ru" =>$request->name_ru,
+            "name_en" =>$request->name_en,
+            "body_uz" =>$request->body_uz, 
+            "body_ru" =>$request->body_ru, 
+            "body_en" =>$request->body_en, 
             "image" =>$banner->image,
         ]);
         return redirect()->route('admin.banners.index')->with('success','Banners updated successfully!');

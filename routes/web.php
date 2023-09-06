@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\BannersController;
+use App\Http\Controllers\Admin\BlogProductsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
@@ -35,7 +36,7 @@ Route::get('/shoppingCart', [MainController::class, 'shoppingCart'])->name('shop
 Route::get('/checkOut', [MainController::class, 'checkOut'])->name('checkOut');
 Route::get('/blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');
 Route::post('/send_post',[MainController::class,'send_massage'] )->name('send_message');
-
+Route::post('/search', [MainController::class, 'search'])->name('search');
 
 //Admin uchun
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
@@ -47,6 +48,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('menu', MenuController::class);
     Route::resource('products', ProductController::class);
     Route::resource('banners', BannersController::class);
+    Route::resource('blogProducts', BlogProductsController::class);
 });
 
 Route::middleware('auth')->group(function () {

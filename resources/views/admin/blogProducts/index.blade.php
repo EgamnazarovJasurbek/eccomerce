@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('title')
-    Ads
+    BlogProducts
 @endsection
 @section('content')
     <div class="main-content">
@@ -19,8 +19,8 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3>Banner Table</h3>
-                            <a href="{{ route('admin.banners.create') }}" class="btn btn-primary ml-auto">Create</a>
+                            <h3>Blog Table</h3>
+                            <a href="{{ route('admin.blogProducts.create') }}" class="btn btn-primary ml-auto">Create</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -35,21 +35,23 @@
                                             <th>Image</th>
                                             <th>Action</th>
                                         </tr>
-                                        @foreach ($banners as $banner)
+                                        @foreach ($blogproducts as $blogproduct)
                                             <tr>
                                                 <td>{{ $loop->iteration }}</td>
-                                                <td>{{ $banner->name_uz }}</td>
-                                                <td>{{ $banner->body_ru }}</td>
+                                                <td>{{ $blogproduct->name_uz }}</td>
+                                                <td>{!! \Str::limit($blogproduct->body_uz,20) !!}</td>
                                                 <td>
                                                     
-                                                        <img alt="image" src="/site/images/{{ $banner->image }}" width="35">
+                                                        <img alt="image" src="/images/{{ $blogproduct->image }}" width="50">
 
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('admin.banners.edit', $banner->id) }}"
+                                                    <a href="{{ route('admin.blogProducts.edit', $blogproduct->id) }}"
                                                         class="btn btn-success">Edit</a>
+                                                        <a href="{{ route('admin.blogProducts.show', $blogproduct->id) }}"
+                                                            class="btn btn-warning">Show</a>
                                                     <form style="display: inline"
-                                                        action="{{ route('admin.banners.destroy', $banner->id) }}"
+                                                        action="{{ route('admin.blogProducts.destroy', $blogproduct->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')

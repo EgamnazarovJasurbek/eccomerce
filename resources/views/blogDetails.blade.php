@@ -28,7 +28,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="blog__details__hero__text">
-                            <h2>The Moment You Need To Remove Garlic From The Menu</h2>
+                            <h2></h2>
                             <ul>
                                 <li>By Michael Scofield</li>
                                 <li>January 14, 2019</li>

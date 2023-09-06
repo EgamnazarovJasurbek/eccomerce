@@ -32,6 +32,9 @@
             <li class="dropdown">
                 <a href="{{ route('admin.banners.index') }}"><i data-feather="sun"></i><span>Banner</span></a>
             </li>
+            <li class="dropdown">
+                <a href="{{ route('admin.blogProducts.index') }}"><i data-feather="sun"></i><span>Blogs</span></a>
+            </li>
             
         </ul>
     </aside>

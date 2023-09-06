@@ -33,7 +33,7 @@
                                         <th>Body (UZ)</th> <td>{{ $product->desc_uz }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Body (RU)</th> <td>{{ $product->desc_en }}/td>
+                                        <th>Body (EN)</th> <td>{{ $product->desc_en }}/td>
                                     </tr>
                                     <tr>
                                         <th>Body (RU)</th> <td>{{ $product->desc_ru }}</td>

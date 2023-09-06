@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Banner;
+use App\Models\BlogProduct;
 use App\Models\Category;
 use App\Models\Menu;
 use App\Models\OrderCustomer;
@@ -15,6 +16,7 @@ class MainController extends Controller
 
     public function index()
     {
+        $blogproducts = BlogProduct::limit(3)->latest()->get();
         $banners = Banner::all();
         $products = Product::all();
         $menus = Menu::all();
@@ -22,7 +24,11 @@ class MainController extends Controller
         $latestProducts = Product::limit(3)->latest()->get();
         $topProducts = Product::where('is_spacial', '1')->limit(3)->get();
         $reviewProducts = Product::where('is_spacial', '0')->limit(3)->get();
+<<<<<<< HEAD
         return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts', 'banners'));
+=======
+        return view('index', compact('menus', 'products', 'moreViews', 'latestProducts', 'topProducts', 'reviewProducts','banners','blogproducts'));
+>>>>>>> 698725c5295f9cb5e0088fdd8661425f5a513470
     }
 
     public function categoryProducts($slug)
@@ -67,9 +73,10 @@ class MainController extends Controller
         return view('checkOut');
     }
 
-    public function blogDetails()
+    public function blogDetails($id)
     {
-        return view('blogDetails');
+        $blogproduct = BlogProduct::where('id',$id)->first();
+        return view('blogDetails',compact('blogproduct'));
     }
 
     public function customerOrder(Request $request, $id)
@@ -125,5 +132,17 @@ class MainController extends Controller
 
         return back();
     }
+<<<<<<< HEAD
     
 }
+=======
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $results = Product::where('title_uz', 'like', '%' . $query . '%')->get();
+
+        return response()->json(['savat' => $results]);
+    }
+}
+>>>>>>> 698725c5295f9cb5e0088fdd8661425f5a513470

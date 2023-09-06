@@ -11,8 +11,8 @@
                     <div class="hero__item set-bg" data-setbg="{{ asset('site/images/' . $banner->image) }}">
                         <div class="hero__text">
                             <span>@lang('words.fruitFresh')</span>
-                            <h2>{{ $banner->name }} <br />100% Organic</h2>
-                            <p>{{ $banner->body }}</p>
+                            <h2>{{ $banner['name_' . \App::getLocale()] }} <br />100% Organic</h2>
+                            <p>{{ $banner['body_' . \App::getLocale()] }}</p>
                             <a href="#" class="primary-btn">SHOP NOW</a>
                         </div>
                     </div>

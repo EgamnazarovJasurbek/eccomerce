@@ -19,13 +19,40 @@
                         <div class="card-body">
                            
                             <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" class="form-control" name="name">
-                           
+                                <label>Name (Uz)</label>
+                                <input type="text" class="form-control" name="name_uz" value="{{ old('name_uz') }}">
+                                @error('name_uz')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="form-group">
-                                <label>Body</label>
-                                <textarea type="text" class="form-control" name="body"></textarea>
+                                <label>Name (En)</label>
+                                <input type="text" class="form-control" name="name_en" value="{{ old('name_en') }}">
+                                @error('name_en')
+                                    <span class="text-danger">{{ $message }}</span>
+                                @enderror
+                            </div>
+                            <div class="form-group">
+                                <label>Name (RU)</label>
+                                <input type="text" class="form-control" name="name_ru" value="{{ old('name_ru') }}">
+                                @error('name_ru')
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
+                            </div>
+                            
+                            <div class="form-group">
+                                <label>Body (UZ)</label>
+                                <textarea type="text" class="form-control ckeditor" name="body_uz"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Body (RU)</label>
+                                <textarea type="text" class="form-control ckeditor" name="body_ru"></textarea>
+        
+                            </div>
+                            <div class="form-group">
+                                <label>Body (EN)</label>
+                                <textarea type="text" class="form-control ckeditor" name="body_en"></textarea>
+        
                             </div>
 
                             <div class="form-group">

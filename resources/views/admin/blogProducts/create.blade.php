@@ -1,72 +1,71 @@
 @extends('layouts.admin')
 
 @section('title')
-    Update Banner
+    Create
 @endsection
 
+
 @section('content')
-    <div class="main-content">
+<div class="main-content">
+    <section class="section">
         <div class="row">
             <div class="col-12">
-                <form action="{{ route('admin.banners.update', $banner->id) }}" method="POST" enctype="multipart/form-data">
+                <form action="{{ route('admin.blogProducts.store') }}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @method('PUT')
                     <div class="card">
                         <div class="card-header">
-                            <h4>Update Banners</h4>
+                            <h4>Add Blogs</h4>
                         </div>
                         <div class="card-body">
-                            
-                            {{-- Add Category Name --}}
                            
                             <div class="form-group">
-                                <label>Name(Uz)</label>
-                                <input type="text" class="form-control" name="name_uz" value="{{ $banner->name_uz }}">
+                                <label>Name (Uz)</label>
+                                <input type="text" class="form-control" name="name_uz" value="{{ old('name_uz') }}">
                                 @error('name_uz')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Name(En)</label>
-                                <input type="text" class="form-control" name="name_en" value="{{ $banner->name_en }}">
+                                <label>Name (En)</label>
+                                <input type="text" class="form-control" name="name_en" value="{{ old('name_en') }}">
                                 @error('name_en')
                                     <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                             <div class="form-group">
-                                <label>Name(RU)</label>
-                                <input type="text" class="form-control" name="name_ru" value="{{ $banner->name_ru }}">
+                                <label>Name (RU)</label>
+                                <input type="text" class="form-control" name="name_ru" value="{{ old('name_ru') }}">
                                 @error('name_ru')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
+                                <span class="text-danger">{{ $message }}</span>
+                            @enderror
                             </div>
+                            
                             <div class="form-group">
                                 <label>Body (UZ)</label>
-                                <textarea type="text" class="form-control ckeditor"  name="body_uz"> {{ $banner->body_uz }}</textarea>
+                                <textarea type="text" class="form-control ckeditor" name="body_uz"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Body (RU)</label>
-                                <textarea type="text" class="form-control ckeditor"  name="body_ru">{{  $banner->body_ru  }}</textarea>
-            
+                                <textarea type="text" class="form-control ckeditor" name="body_ru"></textarea>
+        
                             </div>
                             <div class="form-group">
                                 <label>Body (EN)</label>
-                                <textarea type="text" class="form-control ckeditor"  name="body_en">{{  $banner->body_en  }}</textarea>
-            
+                                <textarea type="text" class="form-control ckeditor" name="body_en"></textarea>
+        
                             </div>
 
                             <div class="form-group">
                                 <label>Image </label>
                                 <input type="file" class="form-control" name="image">
                             </div>
-
                         </div>
                         <div class="card-footer text-right">
-                            <button class="btn btn-success mr-1" type="submit">Save</button>
+                            <button class="btn btn-primary mr-1" type="submit">Save</button>
                         </div>
                 </form>
             </div>
         </div>
-    </div>
+    </section>
+</div>
 @endsection
-

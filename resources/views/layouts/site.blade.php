@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-
+    <script src=" https://cdn.jsdelivr.net/npm/jquery@3.7.0/dist/jquery.min.js"> </script>
     <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;600;900&display=swap" rel="stylesheet">
 
@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Css Styles -->
+    
     <link rel="stylesheet" href="/allStyle/css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="/allStyle/css/font-awesome.min.css" type="text/css">
     <link rel="stylesheet" href="/allStyle/css/elegant-icons.css" type="text/css">
@@ -269,8 +270,61 @@
     <script src="/allStyle/js/mixitup.min.js"></script>
     <script src="/allStyle/js/owl.carousel.min.js"></script>
     <script src="/allStyle/js/main.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+  
+    <script>
+        $(document).ready(function() {
+            var delayTimer;
 
+            $('#search').on('input', function() {
+                clearTimeout(delayTimer);
 
+                var query = $(this).val();
+
+                delayTimer = setTimeout(function() {
+                    sendAjaxRequest(query);
+                }, 300);
+            });
+
+            $('#search').on('keyup', function(event) {
+                if (event.key === 'Backspace') {
+                    clearTimeout(
+                        delayTimer);
+                    sendAjaxRequest('');
+                }
+            });
+
+            function sendAjaxRequest(query) {
+                $.ajax({
+                    url: '/search',
+                    method: 'POST',
+                    data: {
+                        query: query,
+                        _token: $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        var savatData = response.savat;
+                        var html = '';
+                        for (var i = 0; i < savatData.length; i++) {
+                            var item = savatData[i];
+                            html += '<a href="/view_orders_id/' + item.id +
+                                '" class="d-flex justify-content-between form-control h-100" style="cursor: pointer">';
+                            html += '<span>' + item.name + '</span>';
+                            html += '<span>' + item.price + ' So\'m</span>';
+                            html += '</a>';
+                        }
+                        $('#post').html(html);
+                        if (query === '') {
+                            $('#post').empty();
+                        }
+                    },
+
+                });
+            }
+        });
+    </script>
+
+   
 </body>
 
 </html>

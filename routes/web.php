@@ -2,6 +2,7 @@
 
 
 use App\Http\Controllers\Admin\BannersController;
+use App\Http\Controllers\Admin\BlogProductsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\MenuController;
 use App\Http\Controllers\Admin\ProductController;
@@ -35,8 +36,12 @@ Route::get('/checkOut', [MainController::class, 'checkOut'])->name('checkOut');
 Route::get('/blogDetails', [MainController::class, 'blogDetails'])->name('blogDetails');
 Route::post('/likeProducts', [MainController::class, 'likeProducts'])->name('likeProducts');
 Route::post('/send_post',[MainController::class,'send_massage'] )->name('send_message');
+<<<<<<< HEAD
 Route::get('/customerOrder/{id}', [MainController::class, 'customerOrder'])->name('customerOrder');
 Route::get('/shoppingCart', [MainController::class, 'shoppingCart'])->name('shoppingCart');
+=======
+Route::post('/search', [MainController::class, 'search'])->name('search');
+>>>>>>> 698725c5295f9cb5e0088fdd8661425f5a513470
 
 //Admin uchun
 Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () {
@@ -48,6 +53,7 @@ Route::prefix('admin')->middleware(['auth'])->name('admin.')->group(function () 
     Route::resource('menu', MenuController::class);
     Route::resource('products', ProductController::class);
     Route::resource('banners', BannersController::class);
+    Route::resource('blogProducts', BlogProductsController::class);
 });
 
 Route::middleware('auth')->group(function () {

@@ -14,7 +14,7 @@
                        
                     </div>
                     <div class="col-lg-9">
-                        @include('sections.search')
+                        @include('sections.searchs')
                     </div>
                 </div>
             </div>

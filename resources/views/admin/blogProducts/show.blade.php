@@ -43,6 +43,9 @@
                                         <img alt="image" src="/images/{{ $blogProduct->image }}" width="100">
 
                                      </td>
+                                     <tr>
+                                        <th>Slug</th> <td>{{ $blogProduct->slug }}</td>
+                                    </tr>
                                    
                                    
                                    

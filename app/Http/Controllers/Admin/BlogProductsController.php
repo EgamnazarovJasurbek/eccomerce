@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BlogProduct;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Str;
 
 class BlogProductsController extends Controller
 {
@@ -38,7 +39,7 @@ class BlogProductsController extends Controller
             $file->move('images/', $image_name);
             $requestData['image'] = $image_name;
         }
-        
+        $requestData['slug'] = Str::slug($requestData['name_uz']);
        BlogProduct::create($requestData);
        return redirect()->route('admin.blogProducts.index')->with('success', 'Blog created succuessfuly');
     }
@@ -83,6 +84,7 @@ class BlogProductsController extends Controller
             "body_en" =>$request->body_en, 
             "image" =>$blogProduct->image,
         ]);
+        $requestData['slug'] = Str::slug($request->name_uz);
         return redirect()->route('admin.blogProducts.index')->with('success','Blogs updated successfully!');
     }
 

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('body_ru');
             $table->text('body_en');
             $table->string('image');
+            $table->string('slug')->nullable();
             $table->timestamps();
         });
     }

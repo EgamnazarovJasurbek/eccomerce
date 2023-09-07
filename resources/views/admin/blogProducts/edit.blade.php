@@ -59,7 +59,10 @@
                                 <label>Image </label>
                                 <input type="file" class="form-control" name="image">
                             </div>
-
+                            <div class="form-group">
+                                <label>Slug</label>
+                                <input type="text" class="form-control" name="slug" value="{{ $blogProduct->slug }}">
+                            </div>
                         </div>
                         <div class="card-footer text-right">
                             <button class="btn btn-success mr-1" type="submit">Save</button>

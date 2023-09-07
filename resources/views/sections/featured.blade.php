@@ -38,7 +38,7 @@
                                  </ul>
                              </div>
                              <div class="featured__item__text">
-                                 <h6><a href="{{ route('shopDetails', $product->slug) }}">{{ $product->title_uz }}</a>
+                                 <h6><a href="{{ route('shopDetails', $product->slug) }}">{{ $product['title_' . \App::getLocale()] }}</a>
                                  </h6>
                                  <h5>{{ $product->price }}</h5>
                              </div>

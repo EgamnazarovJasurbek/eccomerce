@@ -19,7 +19,7 @@
                             <li><i class="fa fa-calendar-o"></i> {{ $blogproduct->created_at->format(' M.d.Y') }}</li>
                             <li><i class="fa fa-comment-o"></i> 5</li>
                         </ul>
-                        <h5><a href="{{ route('blogDetails',$blogproduct->id) }}">{{ $blogproduct['name_' . \App::getLocale()] }}</a></h5>
+                        <h5><a href="{{ route('blogDetails',$blogproduct->slug) }}">{{ $blogproduct['name_' . \App::getLocale()] }}</a></h5>
                         <p  width="30px">{!! \Str::limit($blogproduct['body_'.\App::getLocale()],100) !!}</p>
                     </div>
                 </div>

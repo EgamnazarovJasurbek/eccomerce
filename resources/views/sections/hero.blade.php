@@ -6,7 +6,7 @@
                   @include('sections.category')
                 </div>
                 <div class="col-lg-9">
-                   @include('sections.search')
+                   @include('sections.searchs')
                     @foreach ($banners as $banner)
                     <div class="hero__item set-bg" data-setbg="{{ asset('site/images/' . $banner->image) }}">
                         <div class="hero__text">

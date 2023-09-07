@@ -60,6 +60,7 @@ class MainController extends Controller
         return view('shopDetails', compact('product', 'otherProducts'));
     }
 
+    
     public function shoppingCart()
     {
         return view('shoppingCart');

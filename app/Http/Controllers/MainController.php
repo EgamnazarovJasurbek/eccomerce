@@ -74,8 +74,8 @@ class MainController extends Controller
     public function blogDetails($slug = null)
     {
         $blogproduct = BlogProduct::where('slug',$slug)->first();
-        
-        return view('blogDetails',compact('blogproduct'));
+        $otherproducts = BlogProduct::where('category_id',$blogproduct->category_id)->where('id', '!=', $blogproduct->id)->limit(3)->get();
+        return view('blogDetails',compact('blogproduct','otherproducts'));
     }
 
     public function customerOrder(Request $request, $id)
@@ -140,6 +140,13 @@ class MainController extends Controller
         ->orWhere('desc_uz','like', '%'.$key.'%') 
         ->orWhere('desc_en','like', '%'.$key.'%')     
         ->orWhere('desc_ru','like', '%'.$key.'%')->get();
+       
+        // $blogproducts = BlogProduct::where('name_uz','like', '%'.$key.'%')
+        // ->orWhere('name_ru','like', '%'.$key.'%') 
+        // ->orWhere('name_en','like', '%'.$key.'%')      
+        // ->orWhere('body_uz','like', '%'.$key.'%') 
+        // ->orWhere('body_en','like', '%'.$key.'%')     
+        // ->orWhere('body_ru','like', '%'.$key.'%')->get();
         return view('search',compact('key','products'));
     }
     

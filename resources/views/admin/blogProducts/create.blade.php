@@ -17,7 +17,14 @@
                             <h4>Add Blogs</h4>
                         </div>
                         <div class="card-body">
-                           
+                            <div class="form-group">
+                                <label>Product Category </label>
+                                <select class="form-control form-select" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Name (Uz)</label>
                                 <input type="text" class="form-control" name="name_uz" value="{{ old('name_uz') }}">

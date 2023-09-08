@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\BlogProduct;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Str;
@@ -24,7 +25,8 @@ class BlogProductsController extends Controller
      */
     public function create()
     {
-        return view('admin.blogProducts.create');
+        $categories = Category::all();
+        return view('admin.blogProducts.create',compact('categories'));
     }
 
     /**
@@ -57,7 +59,8 @@ class BlogProductsController extends Controller
      */
     public function edit(BlogProduct $blogProduct)
     {
-        return view('admin.blogProducts.edit',compact('blogProduct'));
+        $categories = Category::all();
+        return view('admin.blogProducts.edit',compact('blogProduct','categories'));
     }
 
     /**
@@ -76,6 +79,7 @@ class BlogProductsController extends Controller
             $request['image']=$blogProduct->image;
         }
         $blogProduct->update([
+            "category_id" =>$request->category_id,
             "name_uz" =>$request->name_uz,
             "name_ru" =>$request->name_ru,
             "name_en" =>$request->name_en,

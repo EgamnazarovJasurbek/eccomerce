@@ -21,6 +21,9 @@
                             <div class="table-responsive">
                                 <table class="table table-striped" id="table-1">
                                     <tr>
+                                        <th>Category</th> <td>{!! $blogProduct->category->name_uz !!}</td>
+                                    </tr>
+                                    <tr>
                                         <th>Name (UZ)</th> <td>{{ $blogProduct->name_uz }}</td>
                                     </tr>
                                     <tr>

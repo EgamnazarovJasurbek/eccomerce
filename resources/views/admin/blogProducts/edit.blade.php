@@ -18,7 +18,15 @@
                         <div class="card-body">
                             
                             {{-- Add Category Name --}}
-                           
+                            <div class="form-group">
+                                <label>Product Category </label>
+                                <select class="form-control form-select" name="category_id">
+                                    @foreach ($categories as $category)
+                                        <option @if ($blogProduct->category_id == $category->id) selected @endif
+                                            value="{{ $category->id }}">{{ $category->name_uz }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
                             <div class="form-group">
                                 <label>Name(Uz)</label>
                                 <input type="text" class="form-control" name="name_uz" value="{{ $blogProduct->name_uz }}">

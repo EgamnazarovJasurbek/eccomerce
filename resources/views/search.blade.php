@@ -51,7 +51,7 @@
                         <h1 class="error">Kechirasiz, xatolik yuz berdi,  <span>{{ $key }}</span>  Sahifasi <br> topilmadi</h1>
                         {{-- <button type="button" class="btn load-more-btn"><a href="{{ route('index') }}" class="error_btn">@lang('words.home')</a></button> --}}
                         @endif
-                    </div>
+                      
                     <div class="row">
                         @foreach ($products as $product)
                             <div class="col-lg-4 col-md-6 col-sm-6">
@@ -76,6 +76,28 @@
                             </div>
                         @endforeach
                     </div>
+                    
+                    {{-- <div class="row">
+                        @foreach ($blogproducts as $blogproduct)
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="blog__item">
+                                <div class="blog__item__pic">
+                                    <img src="{{ asset('images/' . $blogproduct->image) }}" alt="">
+                                </div>
+                                <div class="blog__item__text">
+                                    <ul>
+                                        <li><i class="fa fa-calendar-o"></i> {{ $blogproduct->created_at->format(' M.d.Y') }}</li>
+                                        <li><i class="fa fa-comment-o"></i> 5</li>
+                                    </ul>
+                                    <h5><a href="{{ route('blogDetails',$blogproduct->slug) }}">{{ $blogproduct['name_' . \App::getLocale()] }}</a></h5>
+                                    <p  width="30px">{!! \Str::limit($blogproduct['body_'.\App::getLocale()],100) !!}</p>
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                       
+                       
+                    </div> --}}
 
                     
                 </div>

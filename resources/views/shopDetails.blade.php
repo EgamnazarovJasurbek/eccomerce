@@ -99,7 +99,7 @@
                     <div class="product__details__tab">
                         <ul class="nav nav-tabs" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="tab" href="#tabs-1" role="tab"
+                                <a class="nav-link active" data-toggle="tab" href="#" role="tab"
                                     aria-selected="true">Description</a>
                             </li>
                         </ul>

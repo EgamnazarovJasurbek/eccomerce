@@ -70,7 +70,24 @@
                     </div>
                 </div>
                 <div class="row">
+                    @foreach ($otherproducts as $otherproduct)
                     <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="{{ asset('images/' . $otherproduct->image) }}" alt="">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> {{ $otherproduct->created_at->format(' M.d.Y') }}</li>
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><a href="{{ route('blogDetails',$otherproduct->slug) }}">{{ $otherproduct['name_' . \App::getLocale()] }}</a></h5>
+                                <p>{!! \Str::limit($otherproduct['body_'.\App::getLocale()],100) !!} </p>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                    {{-- <div class="col-lg-4 col-md-4 col-sm-6">
                         <div class="blog__item">
                             <div class="blog__item__pic">
                                 <img src="/allStyle/img/blog/blog-1.jpg" alt="">
@@ -114,7 +131,7 @@
                                 <p>Sed quia non numquam modi tempora indunt ut labore et dolore magnam aliquam quaerat </p>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </section>
